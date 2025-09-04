@@ -9,9 +9,7 @@ import Signup from "./pages/Signup";
 import ProfileSetup from "./pages/ProfileSetup";
 import Dashboard from "./pages/Dashboard";
 import FindTeam from "./pages/FindTeam";
-import FindTeamAttributes from "./pages/FindTeamAttributes";
 import CreateTeam from "./pages/CreateTeam";
-import CreateTeamAttributes from "./pages/CreateTeamAttributes";
 import MyGroups from "./pages/MyGroups";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
@@ -30,9 +28,7 @@ const App = () => (
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile-setup" element={<ProfileSetup />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/find-team-attributes" element={<FindTeamAttributes />} />
           <Route path="/find-team" element={<FindTeam />} />
-          <Route path="/create-team-attributes" element={<CreateTeamAttributes />} />
           <Route path="/create-team" element={<CreateTeam />} />
           <Route path="/my-groups" element={<MyGroups />} />
           <Route path="/profile" element={<Profile />} />
