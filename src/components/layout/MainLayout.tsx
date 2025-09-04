@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { MessageCircle, User, Bell, Settings, Home, Users, Search, Plus } from "lucide-react";
 
 interface MainLayoutProps {
@@ -60,6 +61,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
             {/* Right Sidebar Icons */}
             <div className="flex items-center space-x-4">
+              {/* Theme Toggle */}
+              <ThemeToggle />
+              
               {/* Chat Button */}
               <Button
                 variant={chatOpen ? "default" : "ghost"}
