@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,15 +7,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 
 const Login = () => {
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleLogin = () => {
-    // Mock login success - navigate to dashboard
-    navigate("/dashboard");
-  };
 
   return (
     <div className="min-h-screen gradient-bg flex items-center justify-center p-4">
@@ -72,7 +66,7 @@ const Login = () => {
             </div>
 
             {/* Login Button */}
-            <Button className="w-full btn-hero" onClick={handleLogin}>
+            <Button className="w-full btn-hero">
               Sign In
             </Button>
 
@@ -87,7 +81,7 @@ const Login = () => {
             </div>
 
             {/* Google Login */}
-            <Button variant="outline" className="w-full" onClick={handleLogin}>
+            <Button variant="outline" className="w-full">
               <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
