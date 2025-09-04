@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,6 +10,15 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email && password) {
+      // Simple validation - in real app would call authentication service
+      navigate("/dashboard");
+    }
+  };
 
   return (
     <div className="min-h-screen gradient-bg flex items-center justify-center p-4">
@@ -26,6 +35,7 @@ const Login = () => {
             <CardDescription>Sign in to your account to continue</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email Input */}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
@@ -66,9 +76,10 @@ const Login = () => {
             </div>
 
             {/* Login Button */}
-            <Button className="w-full btn-hero">
+            <Button type="submit" className="w-full btn-hero">
               Sign In
             </Button>
+            </form>
 
             {/* Divider */}
             <div className="relative">
