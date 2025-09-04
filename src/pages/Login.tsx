@@ -1,15 +1,42 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !password) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    // Simulate login - replace with actual auth logic
+    setTimeout(() => {
+      toast({
+        title: "Success",
+        description: "Logged in successfully!",
+      });
+      navigate('/dashboard');
+      setIsLoading(false);
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen gradient-bg flex items-center justify-center p-4">
@@ -26,6 +53,7 @@ const Login = () => {
             <CardDescription>Sign in to your account to continue</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
+            <form onSubmit={handleLogin} className="space-y-6">
             {/* Email Input */}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
@@ -66,9 +94,10 @@ const Login = () => {
             </div>
 
             {/* Login Button */}
-            <Button className="w-full btn-hero">
-              Sign In
+            <Button type="submit" className="w-full btn-hero" disabled={isLoading}>
+              {isLoading ? "Signing In..." : "Sign In"}
             </Button>
+            </form>
 
             {/* Divider */}
             <div className="relative">
